@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Reservas</title>
+  <style>
+    #reservas{
+      width:400px;
+      top:100px ;
+      margin:auto;
+      border-style:solid;
+      border-width:1px;
+    }
+    input:focus{
+
+      background-color: #FFF0F5;
+    }
+    fieldset{
+      background-color: lightgray;
+    }
+    .text-center{
+      align-items: center;
+    }
+    #header-reservas{
+      display:block;
+      justify-content: center;
+      width:400px;
+      background:#FFF0F5;
+      border-style:solid;
+      border-width: 1px;
+    }
+    .fontsize{
+      font-size:26px;
+    }
+    #h3block{
+      display:block;
+      text-align:center;
+    }
+    form{
+      border-top-width: 1px;
+      border-top-style: solid;
+    }
+    #botones{
+      display:flex;
+      margin-left:130px;
+    }
+    body{
+      padding-top:100px;
+    }
+  </style>
+</head>
+<body id='body'>
+  <div class="container-fluid text-center" id='reservas'>
+          <div id='header-reservas'>
+            <h3 id='h3block'>Reservas</h3>
+          </div>
+          <form id='formulario'class='fontsize' action='/createCliente' method='post' >
+            <br>
+             Nombre: &nbsp; <input id='nombreRes' ref='nombre' name ='nombre' maxlength="20" type='text' required/><br>
+             Telefono:  &nbsp;<input id='telRes'ref='tel' name='telefono' maxlength='10' type='text'/><br>
+             Corte: <input id='cortes' type='radio' ref='cortes' onchange='handleCortes()' name='cortes' />
+             &nbsp;&nbsp;Pedicure/Manicure: <input id='manicure' ref='manicure'type='radio' name='manicure'
+             onchange='handleManicure()' />
+            
+            <br>
+            <br>
+            <div id='botones'>
+              <input id='cancelarRes' type='reset' value='Cancelar' />
+              <input id='aceptarRes' type='submit' onclick='handleItem(e)' value='Reservar' />
+            </div>
+            <br>
+             
+          </form>
+          
+    </div>
+      <script>
+        let reservas =  document.getElementById('reservas');
+        let header =  document.getElementById('header-reservas');
+        let titulo= document.getElementById('h3block');
+        let botones=document.getElementById('botones')
+        let formulario = document.getElementById('formulario');
+        let body= document.getElementById("body");
+        let cortes = document.getElementById('cortes');
+        let manicure = document.getElementById('manicure');
+        let colores = ["#C21460", "#347B98", "#FCCB1A", "#F7F0D4", "#092834"];
+        body.style.background='AliceBlue' ;
+        cortes.checked=true; 
+        handleColors(colores);
+        function handleCortes(){
+          cortes.checked=true;
+          manicure.checked=false;
+        }
+        function handleManicure(){
+          manicure.checked=true;
+          cortes.checked=false;
+        }
+
+        function handleColors(colores){
+          reservas.style.background=colores[0];
+          titulo.style.color=colores[1];
+          header.style.background=colores[2];
+          formulario.style.background=colores[4];
+          formulario.style.color=colores[3];
+          console.log(colores)
+        }
+        
+        
+      </script>
+</body>
+</html>

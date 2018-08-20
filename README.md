@@ -1,2 +1,3 @@
-# prueba
-para el deploy de la barberia
+# barberia
+este programa lleva la lista de turnos de los clientes.
+"# barberia2" 

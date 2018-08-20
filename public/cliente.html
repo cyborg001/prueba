@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<style>
+  	.listas{
+  		text-align: center;
+  		font-size: 18px;
+  		color:white;
+  		
+  	}
+  	body{
+  		background:lightgray;
+  	}
+  	.row{
+  		height:85vh;
+  	}
+  	h1{
+  		color:violet;
+  	}
+  </style>
+
+  <title>lista clientes</title>
+</head>
+<body id='body'>
+	
+		<H2 style='text-align: center;'>LISTADO CLIENTES</H2>
+	<div id='divrow'class='row text-center'>
+		<div id='relleno1'class='col-xs-3'></div>
+		<div id='cortes' class='col-xs-3 listas'></div>
+		<div id='manicure' class='col-xs-3 listas'></div>
+		<div id='relleno2'	class='col-xs-3'></div>
+	</div>
+	<div id='footer'>
+		<a href='/'><h4>Atras</h4></a>
+	</div>
+
+	<script type="text/javascript">
+		let url = 'http://localhost:5000/api';
+		let cortes = $('#cortes');
+		let manicure= $('#manicure');
+		cortes.html('<h1>Cortes</h1><br>');
+		manicure.html('<h1>Manicure</h1><br>');
+		$.getJSON(url,(clientes,status)=>{
+			clientes.forEach((cliente)=>{
+				if(cliente.servicio==='manicure'){
+					manicure.append('<li type=1>Nombre: <i>'+cliente.nombre+'</i>, Telefono: '+cliente.telefono+ '</li>');
+				}
+				if(cliente.servicio==='cortes'){
+					cortes.append('<li type=1>Nombre <i>'+cliente.nombre+'</i>, Telefono: '+cliente.telefono+ '</li>');
+				}
+			});
+		});
+		let row = document.getElementById('divrow');
+		let body = document.getElementById('body');
+		let colores = ["#092834", "#FCCB1A", "#C21460", "#F7F0D4", "#347B98"];
+		handleColors(colores);
+
+		function handleColors(colores){
+          row.style.background=colores[0];
+          body.style.background=colores[1];
+          body.style.color=colores[2];
+          $('#footer a').css({'color':colores[4]});
+          $(".listas").css({'color':colores[3]});
+          
+        }
+	</script>
+</body>
+	
+</html>
