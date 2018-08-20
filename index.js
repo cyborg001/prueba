@@ -3,7 +3,7 @@ const app = express()
 
 
 app.set('view engine','ejs');
-app.set('port',3000)
+app.set('port',5000)
 
 let bodyParser= require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
